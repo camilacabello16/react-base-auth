@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { ConfigProvider } from "antd";
+import AuthProvider from "./provider/authProvider";
+import Routes from "./routers";
+import variables from '~/components/GlobalStyles/GlobalStyles.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: variables.primaryColor,
+          borderRadius: 2,
+        },
+      }}
+    >
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+    </ConfigProvider>
   );
 }
 
